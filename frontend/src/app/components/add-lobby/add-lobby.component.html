@@ -1,0 +1,43 @@
+<h2>Add new lobby</h2>
+<div *ngIf="newLobby">
+    
+        <div class="form-group row">
+          <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputName" placeholder="Lobby Name"  [(ngModel)] ="lobbyName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputFee" class="col-sm-2 col-form-label">Entry fee</label>
+          <div class="col-sm-9">
+            <input type="number"  min="100" max="500" class="form-control" id="inputFee" placeholder="Entry fee"  [(ngModel)] ="entryFee">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputMembers" class="col-sm-2 col-form-label">Total members</label>
+            <div class="col-sm-9">
+              <input type="number"  min="10" max="50" class="form-control" id="inputMembers" placeholder="Member count allowed"  [(ngModel)] ="memberCount">
+            </div>
+        </div>
+        <div class="form-group row" *ngIf="(entryFee>0)&&(memberCount>0)">
+            <label class="col-sm-2 col-form-label">Winner prize</label>
+            <div class="col-sm-9">
+                <label class="col-sm-2 col-form-label">{{(entryFee*memberCount)*0.95}}</label>
+            </div>
+        </div>
+        <div class="form-group row" *ngIf="(entryFee>0)&&(memberCount>0)">
+            <label  class="col-sm-2 col-form-label">House Charges</label>
+            <div class="col-sm-9">
+                <label class="col-sm-2 col-form-label">{{(entryFee*memberCount)*0.05}}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="button" class="btn btn-primary" (click)="addLobby()">Add</button>
+          </div>
+        </div>
+     
+</div>
+<div *ngIf="!newLobby">
+    New Lobby Added sucessfully
+</div>

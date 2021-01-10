@@ -1,0 +1,14 @@
+<div class="row">
+<div class="col-md-4" *ngFor="let lobby of lobbies">
+<div class="card bg-light mb-3" style="max-width: 18rem;" (click)="openLobby(lobby)">
+    <div class="card-header" [ngClass]="(lobby.memberRegistered==lobby.memberRequired)?'ready':'open'">{{lobby.lobbyName}}</div>
+    <div class="card-body">
+      <h5 class="card-title">Members registered : {{lobby.memberRegistered}}/{{lobby.memberRequired}}</h5>
+      <p class="card-text">Prize Money : {{lobby.winnerPrize}}</p>
+      <p class="card-text" *ngIf="lobby.memberRegistered<lobby.memberRequired">Status : Registrations open</p>
+      <p class="card-text" *ngIf="(lobby.memberRegistered==lobby.memberRequired)&&(lobby.winnerId==null)">Status : Ready for lottery</p>
+      <p class="card-text" *ngIf="lobby.winnerId!=null">Status : Winner declared</p>
+    </div>
+  </div>
+</div>
+</div>
